@@ -1,0 +1,25 @@
+{
+  "name": "test-value",
+  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "version": "0.0.0",
+  "description": "test-value",
+  "repository": "https://github.com/75lb/test-value.git",
+  "license": "MIT",
+  "main": "./lib/test-value.js",
+  "keywords": [],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "array-back": "^1",
+    "typical": "^2.3.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js",
+    "lint": "jshint lib/*.js bin/*.js test/*.js; echo",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
+  },
+  "devDependencies": {
+    "tape": "^4.0.0"
+  }
+}
