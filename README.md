@@ -3,10 +3,21 @@
 [![Build Status](https://travis-ci.org/75lb/test-value.svg?branch=master)](https://travis-ci.org/75lb/test-value)
 [![Dependency Status](https://david-dm.org/75lb/test-value.svg)](https://david-dm.org/75lb/test-value)
 
-<a name="test-value
-var testValue = require(test-value);module_"></a>
+<a name="module_test-value"></a>
 ## test-value
-var testValue = require(test-value);
+**Example**  
+```js
+var testValue = require("test-value");
+```
+<a name="exp_module_test-value--testValue"></a>
+### testValue(value, test) ⇒ <code>boolean</code> ⏏
+**Kind**: Exported function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | <code>any</code> | a value to test |
+| test | <code>any</code> | the test query |
+
 
 * * *
 
