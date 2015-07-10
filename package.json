@@ -20,6 +20,7 @@
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
   },
   "devDependencies": {
+    "jsdoc-to-markdown": "^1.1.1",
     "tape": "^4.0.0"
   }
 }
