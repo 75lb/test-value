@@ -50,6 +50,8 @@ test(".exists(obj, { property: primative[] })", function(t){
     t.strictEqual(testValue(fixture, { arr: [ /4/ ] }), false);
     t.strictEqual(testValue(fixture, { colour: [ 1, 2, 3 ] }), false, "querying a string with array");
     t.strictEqual(testValue(fixture, { undefinedProperty: [ 1, 2, 3 ] }), false, "querying undefined property");
+    t.strictEqual(testValue(fixture, { undefinedProperty: [ undefined ] }), true);
+    t.strictEqual(testValue(fixture, { undefinedProperty: [ null ] }), false);
     t.end();
 });
 
