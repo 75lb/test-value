@@ -2,7 +2,7 @@
   "name": "test-value",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "1.0.1",
-  "description": "test-value",
+  "description": "Test a value in a variety of ways",
   "repository": "https://github.com/75lb/test-value.git",
   "license": "MIT",
   "main": "./lib/test-value.js",
