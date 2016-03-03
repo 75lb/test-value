@@ -8,8 +8,13 @@
 ## test-value
 **Example**  
 ```js
-var testValue = require("test-value")
+var testValue = require('test-value')
 ```
+
+* [test-value](#module_test-value)
+    * [testValue(value, test)](#exp_module_test-value--testValue) ⇒ <code>boolean</code> ⏏
+        * [.cb(test)](#module_test-value--testValue.cb) ⇒ <code>function</code>
+
 <a name="exp_module_test-value--testValue"></a>
 ### testValue(value, test) ⇒ <code>boolean</code> ⏏
 **Kind**: Exported function  
@@ -19,7 +24,17 @@ var testValue = require("test-value")
 | value | <code>any</code> | a value to test |
 | test | <code>any</code> | the test query |
 
+<a name="module_test-value--testValue.cb"></a>
+#### testValue.cb(test) ⇒ <code>function</code>
+Returns a callback suitable for use by `Array` methods like `some`, `filter`, `find` etc.
+
+**Kind**: static method of <code>[testValue](#exp_module_test-value--testValue)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| test | <code>any</code> | the test query |
+
 
 * * *
 
-&copy; 2015 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2015-16 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).

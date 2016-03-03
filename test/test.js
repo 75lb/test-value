@@ -219,3 +219,14 @@ test('object deep exists, summary', function (t) {
   t.strictEqual(testValue(obj4, query), true, 'true in obj4')
   t.end()
 })
+
+test('testValue.cb({ property: primative })', function (t) {
+  var arr = [
+    { num: 1 }, { num: 2 }, { num: 3 }
+  ]
+  t.strictEqual(arr.some(testValue.cb({ num: 2 })), true)
+  t.strictEqual(arr.some(testValue.cb({ num: 4 })), false)
+  t.deepEqual(arr.filter(testValue.cb({ num: 2 })), [ { num: 2 } ])
+  t.deepEqual(arr.filter(testValue.cb({ num: 4 })), [])
+  t.end()
+})
