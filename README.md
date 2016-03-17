@@ -13,7 +13,7 @@ var testValue = require('test-value')
 
 * [test-value](#module_test-value)
     * [testValue(value, test)](#exp_module_test-value--testValue) ⇒ <code>boolean</code> ⏏
-        * [.cb(test)](#module_test-value--testValue.cb) ⇒ <code>function</code>
+        * [.where(test)](#module_test-value--testValue.where) ⇒ <code>function</code>
 
 <a name="exp_module_test-value--testValue"></a>
 ### testValue(value, test) ⇒ <code>boolean</code> ⏏
@@ -24,8 +24,8 @@ var testValue = require('test-value')
 | value | <code>any</code> | a value to test |
 | test | <code>any</code> | the test query |
 
-<a name="module_test-value--testValue.cb"></a>
-#### testValue.cb(test) ⇒ <code>function</code>
+<a name="module_test-value--testValue.where"></a>
+#### testValue.where(test) ⇒ <code>function</code>
 Returns a callback suitable for use by `Array` methods like `some`, `filter`, `find` etc.
 
 **Kind**: static method of <code>[testValue](#exp_module_test-value--testValue)</code>  
