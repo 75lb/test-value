@@ -246,5 +246,10 @@ test('testValue(val, object, { strict: true })', function (t) {
   t.strictEqual(testValue(obj1, [ query1, query2 ]), true)
   t.strictEqual(testValue(obj1, [ query1, query2 ], { strict: true }), false)
   t.strictEqual(testValue(obj1, [ query1, query2, obj1 ], { strict: true }), true)
+
+  t.strictEqual(testValue(Object.getPrototypeOf([ 1, 2 ]), Array.prototype), true)
+  t.strictEqual(testValue(Object.getPrototypeOf([ 1, 2 ]), [ Array.prototype ]), true)
+  t.strictEqual(testValue(Object.getPrototypeOf([ 1, 2 ]), Array.prototype, { strict: true }), true)
+  t.strictEqual(testValue(Object.getPrototypeOf([ 1, 2 ]), [ Array.prototype ], { strict: true }), true)
   t.end()
 })
