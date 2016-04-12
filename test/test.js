@@ -29,7 +29,7 @@ var fixture = {
   ]
 }
 
-test('.exists(obj, { property: primative })', function (t) {
+test('testValue(obj, { property: primative })', function (t) {
   t.strictEqual(testValue(fixture, { result: 'clive' }), true)
   t.strictEqual(testValue(fixture, { hater: true }), true)
   t.strictEqual(testValue(fixture, { result: 'clive', hater: true }), true)
@@ -37,14 +37,14 @@ test('.exists(obj, { property: primative })', function (t) {
   t.end()
 })
 
-test('.exists(obj, { !property: primative })', function (t) {
+test('testValue(obj, { !property: primative })', function (t) {
   t.strictEqual(testValue(fixture, { '!result': 'clive' }), false)
   t.strictEqual(testValue(fixture, { '!result': 'ian' }), true)
   t.strictEqual(testValue(fixture, { '!result': 'ian', '!hater': false }), true)
   t.end()
 })
 
-test('.exists(obj, { property: primative[] })', function (t) {
+test('testValue(obj, { property: primative[] })', function (t) {
   t.strictEqual(testValue(fixture, { arr: [ 1, 2, 3 ] }), true)
   t.strictEqual(testValue(fixture, { arr: [ /1/ ] }), true)
   t.strictEqual(testValue(fixture, { arr: [ /4/ ] }), false)
@@ -55,19 +55,19 @@ test('.exists(obj, { property: primative[] })', function (t) {
   t.end()
 })
 
-test('.exists(obj, { property: { property: primative[] } })', function (t) {
+test('testValue(obj, { property: { property: primative[] } })', function (t) {
   t.strictEqual(testValue(fixture, { deep: { arr: [ 1, 2 ] } }), true)
   t.strictEqual(testValue(fixture, { deep: { arr: [ 3, 4 ] } }), true)
   t.strictEqual(testValue(fixture, { deep: { favourite: { colour: [ 'white', 'red' ] } } }), true)
   t.end()
 })
 
-test('.exists(obj, { property: undefined, property: regex })', function (t) {
+test('testValue(obj, { property: undefined, property: regex })', function (t) {
   t.strictEqual(testValue(fixture.deep, { undefinedProperty: undefined, name: /.+/ }), true)
   t.end()
 })
 
-test('.exists(obj, { property: /regex/ })', function (t) {
+test('testValue(obj, { property: /regex/ })', function (t) {
   t.strictEqual(testValue(fixture, { colour: /red/ }), true)
   t.strictEqual(testValue(fixture, { colour: /black/ }), false)
   t.strictEqual(testValue(fixture, { colour: /RED/i }), true)
@@ -80,37 +80,37 @@ test('.exists(obj, { property: /regex/ })', function (t) {
   t.end()
 })
 
-test('.exists(obj, { !property: /regex/ })', function (t) {
+test('testValue(obj, { !property: /regex/ })', function (t) {
   t.strictEqual(testValue(fixture, { '!colour': /red/ }), false)
   t.strictEqual(testValue(fixture, { '!colour': /black/ }), true)
   t.strictEqual(testValue(fixture, { '!colour': /blue/ }), true)
   t.end()
 })
 
-test('.exists(obj, { property: function })', function (t) {
+test('testValue(obj, { property: function })', function (t) {
   t.strictEqual(testValue(fixture, { number: function (n) { return n < 4 } }), false, '< 4')
   t.strictEqual(testValue(fixture, { number: function (n) { return n < 10 } }), true, '< 10')
   t.end()
 })
 
-test('.exists(obj, { !property: function })', function (t) {
+test('testValue(obj, { !property: function })', function (t) {
   t.strictEqual(testValue(fixture, { '!number': function (n) { return n < 10 } }), false, '< 10')
   t.end()
 })
 
-test('.exists(obj, { property: object })', function (t) {
+test('testValue(obj, { property: object })', function (t) {
   t.strictEqual(testValue(fixture, { testClass: { one: 1 } }), true, 'querying a plain object')
   t.strictEqual(testValue(fixture, { testClass: testClass }), true, 'querying an object instance')
   t.end()
 })
 
-test('.exists(obj, { +property: primitive })', function (t) {
+test('testValue(obj, { +property: primitive })', function (t) {
   t.strictEqual(testValue(fixture, { arr: 1 }), false)
   t.strictEqual(testValue(fixture, { '+arr': 1 }), true)
   t.end()
 })
 
-test('.exists(obj, { property. { +property: query } })', function (t) {
+test('testValue(obj, { property. { +property: query } })', function (t) {
   t.strictEqual(testValue(fixture, { deep: { favourite: { '+colour': 'red' } } }), true)
   t.strictEqual(testValue(fixture, { deep: { favourite: { '+colour': /red/ } } }), true)
   t.strictEqual(testValue(fixture, { deep: { favourite: { '+colour': function (c) {
@@ -120,7 +120,7 @@ test('.exists(obj, { property. { +property: query } })', function (t) {
   t.end()
 })
 
-test('.exists(obj, { +property: query })', function (t) {
+test('testValue(obj, { +property: query })', function (t) {
   t.strictEqual(testValue(fixture, { arrObjects: { number: 1 } }), false)
   t.strictEqual(testValue(fixture, { '+arrObjects': { number: 1 } }), true)
   t.end()
@@ -228,5 +228,23 @@ test('testValue.where({ property: primative })', function (t) {
   t.strictEqual(arr.some(testValue.where({ num: 4 })), false)
   t.deepEqual(arr.filter(testValue.where({ num: 2 })), [ { num: 2 } ])
   t.deepEqual(arr.filter(testValue.where({ num: 4 })), [])
+  t.end()
+})
+
+test('testValue(val, object, { strict: true })', function (t) {
+  const obj1 = { one: 1 }
+  const query1 = { one: 1 }
+  const query2 = { two: 2 }
+  t.strictEqual(testValue(obj1, query1), true)
+  t.strictEqual(testValue(obj1, query1, { strict: true }), false)
+  t.strictEqual(testValue(obj1, query2), false)
+  t.strictEqual(testValue(obj1, query2, { strict: true }), false)
+  t.strictEqual(testValue(obj1, [ query1 ]), true)
+  t.strictEqual(testValue(obj1, [ query1 ], { strict: true }), false)
+  t.strictEqual(testValue(obj1, [ query2 ]), false)
+  t.strictEqual(testValue(obj1, [ query2 ], { strict: true }), false)
+  t.strictEqual(testValue(obj1, [ query1, query2 ]), true)
+  t.strictEqual(testValue(obj1, [ query1, query2 ], { strict: true }), false)
+  t.strictEqual(testValue(obj1, [ query1, query2, obj1 ], { strict: true }), true)
   t.end()
 })
