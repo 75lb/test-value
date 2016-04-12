@@ -258,5 +258,11 @@ test('testValue(val, object, { strict: true })', function (t) {
   t.strictEqual(testValue(Object.getPrototypeOf(one), [ Function.prototype ]), true)
   t.strictEqual(testValue(Object.getPrototypeOf(one), Function.prototype, { strict: true }), true)
   t.strictEqual(testValue(Object.getPrototypeOf(one), [ Function.prototype ], { strict: true }), true)
+
+  t.strictEqual(testValue({}, Object.prototype), false)
+  t.strictEqual(testValue(Object.getPrototypeOf({}), Object.prototype), true)
+  t.strictEqual(testValue(Object.getPrototypeOf({}), [ Object.prototype ]), true)
+  t.strictEqual(testValue(Object.getPrototypeOf({}), Object.prototype, { strict: true }), true)
+  t.strictEqual(testValue(Object.getPrototypeOf({}), [ Object.prototype ], { strict: true }), true)
   t.end()
 })
