@@ -13,18 +13,20 @@ var testValue = require('test-value')
 ```
 
 * [test-value](#module_test-value)
-    * [testValue(value, test)](#exp_module_test-value--testValue) ⇒ <code>boolean</code> ⏏
+    * [testValue(value, test, [options])](#exp_module_test-value--testValue) ⇒ <code>boolean</code> ⏏
         * [.where(test)](#module_test-value--testValue.where) ⇒ <code>function</code>
 
 <a name="exp_module_test-value--testValue"></a>
 
-### testValue(value, test) ⇒ <code>boolean</code> ⏏
+### testValue(value, test, [options]) ⇒ <code>boolean</code> ⏏
 **Kind**: Exported function  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | value | <code>any</code> | a value to test |
 | test | <code>any</code> | the test query |
+| [options] | <code>object</code> |  |
+| [options.strict] | <code>boolean</code> | Treat an object like a value not a query. |
 
 <a name="module_test-value--testValue.where"></a>
 
