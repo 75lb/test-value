@@ -5,6 +5,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 <a name="module_test-value"></a>
+
 ## test-value
 **Example**  
 ```js
@@ -16,6 +17,7 @@ var testValue = require('test-value')
         * [.where(test)](#module_test-value--testValue.where) ⇒ <code>function</code>
 
 <a name="exp_module_test-value--testValue"></a>
+
 ### testValue(value, test) ⇒ <code>boolean</code> ⏏
 **Kind**: Exported function  
 
@@ -25,6 +27,7 @@ var testValue = require('test-value')
 | test | <code>any</code> | the test query |
 
 <a name="module_test-value--testValue.where"></a>
+
 #### testValue.where(test) ⇒ <code>function</code>
 Returns a callback suitable for use by `Array` methods like `some`, `filter`, `find` etc.
 
