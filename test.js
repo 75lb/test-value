@@ -1,16 +1,16 @@
 'use strict'
-var TestRunner = require('test-runner')
-var testValue = require('../')
-var a = require('core-assert')
+const TestRunner = require('test-runner')
+const testValue = require('./')
+const a = require('assert')
 
 function TestClass () {
   this.one = 1
 }
 
-var testClass = new TestClass()
-var runner = new TestRunner()
+const testClass = new TestClass()
+const runner = new TestRunner()
 
-var fixture = {
+const fixture = {
   result: 'clive',
   hater: true,
   colour: 'red-ish',
@@ -117,7 +117,7 @@ runner.test('testValue(obj, { +property: query })', function () {
 })
 
 runner.test('object deep exists, summary', function () {
-  var query = {
+  const query = {
     one: {
       one: {
         three: 'three',
@@ -133,7 +133,7 @@ runner.test('object deep exists, summary', function () {
     }
   }
 
-  var obj1 = {
+  const obj1 = {
     one: {
       one: {
         one: 'one',
@@ -149,7 +149,7 @@ runner.test('object deep exists, summary', function () {
     }
   }
 
-  var obj2 = {
+  const obj2 = {
     one: {
       one: {
         one: 'one',
@@ -164,7 +164,7 @@ runner.test('object deep exists, summary', function () {
     }
   }
 
-  var obj3 = {
+  const obj3 = {
     one: {
       one: {
         one: 'one',
@@ -184,7 +184,7 @@ runner.test('object deep exists, summary', function () {
     }
   }
 
-  var obj4 = {
+  const obj4 = {
     one: {
       one: {
         one: 'one',
@@ -210,7 +210,7 @@ runner.test('object deep exists, summary', function () {
 })
 
 runner.test('testValue.where({ property: primative })', function () {
-  var arr = [
+  const arr = [
     { num: 1 }, { num: 2 }, { num: 3 }
   ]
   a.strictEqual(arr.some(testValue.where({ num: 2 })), true)
@@ -220,9 +220,9 @@ runner.test('testValue.where({ property: primative })', function () {
 })
 
 runner.test('testValue(val, object, { strict: true })', function () {
-  var obj1 = { one: 1 }
-  var query1 = { one: 1 }
-  var query2 = { two: 2 }
+  const obj1 = { one: 1 }
+  const query1 = { one: 1 }
+  const query2 = { two: 2 }
   a.strictEqual(testValue(obj1, query1), true)
   a.strictEqual(testValue(obj1, query1, { strict: true }), false)
   a.strictEqual(testValue(obj1, query2), false)

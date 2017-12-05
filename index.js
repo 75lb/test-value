@@ -1,11 +1,11 @@
 'use strict'
-var arrayify = require('array-back')
-var t = require('typical')
+const arrayify = require('array-back')
+const t = require('typical')
 
 /**
  * @module test-value
  * @example
- * var testValue = require('test-value')
+ * const testValue = require('test-value')
  */
 module.exports = testValue
 
@@ -14,18 +14,18 @@ module.exports = testValue
  * @param {any} - a value to test
  * @param {any} - the test query
  * @param [options] {object}
- * @param [options.strict] {boolean} - Treat an object like a value not a query. 
+ * @param [options.strict] {boolean} - Treat an object like a value not a query.
  * @returns {boolean}
  */
 function testValue (value, test, options) {
   options = options || {}
   if (test !== Object.prototype && t.isPlainObject(test) && t.isObject(value) && !options.strict) {
     return Object.keys(test).every(function (prop) {
-      var queryValue = test[prop]
+      let queryValue = test[prop]
 
       /* get flags */
-      var isNegated = false
-      var isContains = false
+      let isNegated = false
+      let isContains = false
 
       if (prop.charAt(0) === '!') {
         isNegated = true
@@ -35,18 +35,18 @@ function testValue (value, test, options) {
 
       /* strip flag char */
       prop = (isNegated || isContains) ? prop.slice(1) : prop
-      var objectValue = value[prop]
+      let objectValue = value[prop]
 
       if (isContains) {
         queryValue = arrayify(queryValue)
         objectValue = arrayify(objectValue)
       }
 
-      var result = testValue(objectValue, queryValue, options)
+      const result = testValue(objectValue, queryValue, options)
       return isNegated ? !result : result
     })
   } else if (test !== Array.prototype && Array.isArray(test)) {
-    var tests = test
+    const tests = test
     if (value === Array.prototype || !Array.isArray(value)) value = [ value ]
     return value.some(function (val) {
       return tests.some(function (test) {

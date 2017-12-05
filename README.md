@@ -9,7 +9,7 @@
 ## test-value
 **Example**  
 ```js
-var testValue = require('test-value')
+const testValue = require('test-value')
 ```
 
 * [test-value](#module_test-value)
@@ -33,7 +33,7 @@ var testValue = require('test-value')
 #### testValue.where(test) ⇒ <code>function</code>
 Returns a callback suitable for use by `Array` methods like `some`, `filter`, `find` etc.
 
-**Kind**: static method of <code>[testValue](#exp_module_test-value--testValue)</code>  
+**Kind**: static method of [<code>testValue</code>](#exp_module_test-value--testValue)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -42,4 +42,4 @@ Returns a callback suitable for use by `Array` methods like `some`, `filter`, `f
 
 * * *
 
-&copy; 2015-16 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).
+&copy; 2015-18 Lloyd Brookes \<75pound@gmail.com\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).

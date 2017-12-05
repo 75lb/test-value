@@ -5,22 +5,20 @@
   "description": "Test a value in a variety of ways",
   "repository": "https://github.com/75lb/test-value.git",
   "license": "MIT",
-  "main": "./lib/test-value.js",
   "keywords": [],
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "dependencies": {
-    "array-back": "^1.0.3",
-    "typical": "^2.6.0"
+    "array-back": "^2.0.0",
+    "typical": "^2.6.1"
   },
   "scripts": {
-    "test": "test-runner test/*.js",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
+    "test": "test-runner test.js",
+    "docs": "jsdoc2md -t README.hbs index.js > README.md; echo"
   },
   "devDependencies": {
-    "core-assert": "^0.2.0",
-    "jsdoc-to-markdown": "^2.0.0-alpha",
-    "test-runner": "^0.2.3"
+    "jsdoc-to-markdown": "^3.0.2",
+    "test-runner": "^0.4.1"
   }
 }
